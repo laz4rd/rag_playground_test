@@ -16,7 +16,7 @@ def add_chunk(chunk_id, chunk_text, embedding):
         embeddings=[embedding]
     )
     
-def search(query_embedding, n_results=10):
+def search(query_embedding, n_results=4):
 
     results = collection.query(
         query_embeddings=[query_embedding],
