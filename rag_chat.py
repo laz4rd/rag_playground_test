@@ -20,7 +20,7 @@ print("\nRetrieved Context Length:", len(context))
 start = time.time()
 
 response = chat(
-    model="qwen3:8b",
+    model="gemma4:31b-cloud",
     messages=[
         {
             "role": "system",
