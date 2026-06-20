@@ -3,22 +3,21 @@ from chunker import create_chunks
 from embedder import get_embedding
 from vector_store import add_chunk
 
-text = extract_pdf_text(
-    "documents/sample.pdf"
-)
 
-chunks = create_chunks(text)
+def ingest_pdf(pdf_path: str):
 
-print(f"Chunks: {len(chunks)}")
+    text = extract_pdf_text(pdf_path)
 
-for i, chunk in enumerate(chunks):
+    chunks = create_chunks(text)
 
-    embedding = get_embedding(chunk)
+    for i, chunk in enumerate(chunks):
 
-    add_chunk(
-        chunk_id=i,
-        chunk_text=chunk,
-        embedding=embedding
-    )
+        embedding = get_embedding(chunk)
 
-    print(f"Stored chunk {i}")
+        add_chunk(
+            chunk_id=i,
+            chunk_text=chunk,
+            embedding=embedding
+        )
+
+    return len(chunks)
