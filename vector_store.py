@@ -15,3 +15,12 @@ def add_chunk(chunk_id, chunk_text, embedding):
         documents=[chunk_text],
         embeddings=[embedding]
     )
+    
+def search(query_embedding, n_results=10):
+
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=n_results
+    )
+
+    return results["documents"][0]
